@@ -8,4 +8,5 @@ export default {
   errorTitle: '#B82C2C',
   blueBg: '#c4dbff',
   blueTitle: '#1c488c',
+  successTitle: '#80cf48',
 };

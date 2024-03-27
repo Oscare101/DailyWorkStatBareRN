@@ -105,6 +105,13 @@ function TrashIcon(color: string) {
   `;
 }
 
+function AddIcon(color: string) {
+  return `<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M256 112V400M400 256H112" stroke=${color} stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+}
+
 export default function Icon(props: {
   icon: string;
   size: number;
@@ -191,6 +198,13 @@ export default function Icon(props: {
     chart: (
       <SvgXml
         xml={ChartIcon(props.color)}
+        width={props.size}
+        height={props.size}
+      />
+    ),
+    add: (
+      <SvgXml
+        xml={AddIcon(props.color)}
         width={props.size}
         height={props.size}
       />

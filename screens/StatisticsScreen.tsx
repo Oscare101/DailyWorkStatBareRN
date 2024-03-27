@@ -1,9 +1,10 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {RootState} from '../redux';
 import {DailyWork} from '../constants/interfaces';
 import {GetWeekDay} from '../constants/functions';
 import taskNames from '../constants/taskNames';
+import colors from '../constants/colors';
 
 const months = [
   'Січень',
@@ -48,7 +49,6 @@ export default function StatisticsScreen({navigation}: any) {
       return result;
     }, {});
 
-    // Перетворюємо об'єкт у масив
     const resultArray = Object.entries(groupedData).map(([key, value]) => ({
       year: parseInt(key.split('-')[0]),
       month: parseInt(key.split('-')[1]),
@@ -70,7 +70,9 @@ export default function StatisticsScreen({navigation}: any) {
 
     function RenderDaysData({item}: any) {
       return (
-        <View
+        <TouchableOpacity
+          onPress={() => navigation.navigate('WorkingDayScreen', {data: item})}
+          activeOpacity={0.8}
           style={{
             backgroundColor: '#fff',
             flex: 1,
@@ -81,11 +83,11 @@ export default function StatisticsScreen({navigation}: any) {
             justifyContent: 'space-between',
             padding: 5,
           }}>
-          <Text>
+          <Text style={{color: colors.main}}>
             {GetWeekDay(item.year, item.month, item.date)} {item.date}
           </Text>
-          <Text>{item.tasks + item.chats}</Text>
-        </View>
+          <Text style={{color: colors.main}}>{item.tasks + item.chats}</Text>
+        </TouchableOpacity>
       );
     }
 
@@ -140,8 +142,8 @@ export default function StatisticsScreen({navigation}: any) {
                       item.data.length /
                       workHours
                     ).toFixed() >= 8
-                      ? '#80cf48'
-                      : '#cf4848',
+                      ? colors.successTitle
+                      : colors.errorTitle,
                 },
               ]}>
               {(
@@ -178,6 +180,7 @@ export default function StatisticsScreen({navigation}: any) {
             paddingBottom: 4,
             borderRadius: 5,
           }}
+          scrollEnabled={false}
           data={item.data.sort((a: any, b: any) => b.timestamp - a.timestamp)}
           renderItem={RenderDaysData}
         />
@@ -187,11 +190,11 @@ export default function StatisticsScreen({navigation}: any) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Статистика</Text>
       <FlatList
         style={{width: '92%'}}
         data={GetMonthData().reverse()}
         renderItem={RenderMonthData}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -205,7 +208,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     flex: 1,
   },
-  title: {fontSize: 24},
   monthTitle: {
     fontSize: 18,
     width: '100%',
@@ -215,9 +217,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginBottom: 5,
     paddingBottom: 5,
+    color: colors.main,
   },
-  monthStatTitle: {fontSize: 16},
-  monthStatValue: {fontSize: 16, fontWeight: '500'},
-  monthTasksNamesTitle: {fontSize: 13, width: '33%', opacity: 0.8},
-  monthTasksNamesValue: {fontSize: 14},
+  monthStatTitle: {fontSize: 16, color: colors.comment},
+  monthStatValue: {fontSize: 16, fontWeight: '500', color: colors.main},
+  monthTasksNamesTitle: {
+    fontSize: 13,
+    width: '33%',
+    opacity: 0.8,
+    color: colors.comment,
+  },
+  monthTasksNamesValue: {fontSize: 14, color: colors.main},
 });
