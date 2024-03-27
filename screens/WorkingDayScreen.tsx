@@ -7,6 +7,9 @@ import {updateDailyWork} from '../redux/dailyWork';
 import StatBlock from '../components/StatBlock';
 import Categories from '../components/Categories';
 import Header from '../components/Header';
+import Icon from '../components/Icon';
+import colors from '../constants/colors';
+import DeleteBlock from '../components/DeleteBlock';
 
 export default function WorkingDayScreen({route, navigation}: any) {
   const dailyWork = useSelector((state: RootState) => state.dailyWork);
@@ -38,6 +41,7 @@ export default function WorkingDayScreen({route, navigation}: any) {
         )}`}
         action="back"
       />
+      <DeleteBlock delete={DeleteDay} />
       <StatBlock data={route.params.data} />
       <Categories data={route.params.data} />
       <View style={{flex: 1}}></View>
