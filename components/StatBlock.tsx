@@ -4,10 +4,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux';
 import {DailyWork} from '../constants/interfaces';
 import {updateDailyWork} from '../redux/dailyWork';
+import Icon from './Icon';
+import colors from '../constants/colors';
 
 export default function StatBlock(props: any) {
   const dailyWork = useSelector((state: RootState) => state.dailyWork);
-  const userInfo = useSelector((state: RootState) => state.userInfo);
   const dispatch = useDispatch();
 
   function GetTasks() {
@@ -58,7 +59,7 @@ export default function StatBlock(props: any) {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          {/* <Icon name="checkbox-outline" size={24} color="black" /> */}
+          <Icon icon="task" size={24} color={colors.main} />
           <Text style={styles.statText}>Задачі: </Text>
           <Text style={styles.statValue}>{GetTasks()?.tasks || 0}</Text>
         </View>
@@ -81,7 +82,7 @@ export default function StatBlock(props: any) {
               onPress={() => {
                 StatChange('task', +1);
               }}>
-              <Text>+1</Text>
+              <Text style={{color: colors.blueTitle}}>+1</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.statChangeButton, {backgroundColor: '#c4dbff'}]}
@@ -89,7 +90,7 @@ export default function StatBlock(props: any) {
               onPress={() => {
                 StatChange('task', +10);
               }}>
-              <Text>+10</Text>
+              <Text style={{color: colors.blueTitle}}>+10</Text>
             </TouchableOpacity>
           </View>
           <View
@@ -104,7 +105,7 @@ export default function StatBlock(props: any) {
               onPress={() => {
                 StatChange('task', -1);
               }}>
-              <Text>-1</Text>
+              <Text style={{color: colors.errorTitle}}>-1</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.statChangeButton, {backgroundColor: '#ffc2c2'}]}
@@ -112,7 +113,7 @@ export default function StatBlock(props: any) {
               onPress={() => {
                 StatChange('task', -10);
               }}>
-              <Text>-10</Text>
+              <Text style={{color: colors.errorTitle}}>-10</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -124,7 +125,7 @@ export default function StatBlock(props: any) {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          {/* <Icon name="chatbubble-ellipses-outline" size={24} color="black" /> */}
+          <Icon icon="chat" size={24} color={colors.main} />
           <Text style={styles.statText}>Чати: </Text>
           <Text style={styles.statValue}>{GetTasks()?.chats || 0}</Text>
         </View>
@@ -142,20 +143,26 @@ export default function StatBlock(props: any) {
               justifyContent: 'center',
             }}>
             <TouchableOpacity
-              style={[styles.statChangeButton, {backgroundColor: '#c4dbff'}]}
+              style={[
+                styles.statChangeButton,
+                {backgroundColor: colors.blueBg},
+              ]}
               activeOpacity={0.8}
               onPress={() => {
                 StatChange('chat', +1);
               }}>
-              <Text>+1</Text>
+              <Text style={{color: colors.blueTitle}}>+1</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.statChangeButton, {backgroundColor: '#c4dbff'}]}
+              style={[
+                styles.statChangeButton,
+                {backgroundColor: colors.blueBg},
+              ]}
               activeOpacity={0.8}
               onPress={() => {
                 StatChange('chat', +10);
               }}>
-              <Text>+10</Text>
+              <Text style={{color: colors.blueTitle}}>+10</Text>
             </TouchableOpacity>
           </View>
           <View
@@ -170,7 +177,7 @@ export default function StatBlock(props: any) {
               onPress={() => {
                 StatChange('chat', -1);
               }}>
-              <Text>-1</Text>
+              <Text style={{color: colors.errorTitle}}>-1</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.statChangeButton, {backgroundColor: '#ffc2c2'}]}
@@ -178,7 +185,7 @@ export default function StatBlock(props: any) {
               onPress={() => {
                 StatChange('chat', -10);
               }}>
-              <Text>-10</Text>
+              <Text style={{color: colors.errorTitle}}>-10</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -236,9 +243,12 @@ const styles = StyleSheet.create({
   statText: {
     fontSize: 20,
     marginLeft: 5,
+    color: colors.comment,
+    marginHorizontal: 10,
   },
   statValue: {
     fontSize: 30,
+    color: colors.main,
   },
   statChangeButton: {
     padding: 10,
@@ -248,7 +258,6 @@ const styles = StyleSheet.create({
     margin: 2,
     borderRadius: 5,
   },
-  dayStatTitle: {fontSize: 18},
-
-  dayStatValue: {fontSize: 24, fontWeight: '500'},
+  dayStatTitle: {fontSize: 18, color: colors.comment},
+  dayStatValue: {fontSize: 24, fontWeight: '500', color: colors.main},
 });

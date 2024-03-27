@@ -13,6 +13,8 @@ import {RootState} from '../redux';
 import {DailyWork} from '../constants/interfaces';
 import {updateDailyWork} from '../redux/dailyWork';
 import {useState} from 'react';
+import Icon from './Icon';
+import colors from '../constants/colors';
 export default function Categories(props: any) {
   const dailyWork = useSelector((state: RootState) => state.dailyWork);
   const dispatch = useDispatch();
@@ -59,7 +61,7 @@ export default function Categories(props: any) {
           borderColor: '#666',
           opacity: currentTaskName === item ? 1 : 0.5,
           marginVertical: 5,
-          backgroundColor: currentTaskName === item ? '#c7ddff' : '#fff',
+          backgroundColor: currentTaskName === item ? colors.blueBg : '#fff',
         }}>
         <Text style={styles.taskNameButtonTitle}>{item}</Text>
       </TouchableOpacity>
@@ -90,7 +92,7 @@ export default function Categories(props: any) {
               style={styles.exitButton}
               activeOpacity={0.8}
               onPress={() => setModal(false)}>
-              {/* <Icon name="close-outline" size={36} color="black" /> */}
+              <Icon icon="close" size={36} color={colors.main} />
             </TouchableOpacity>
             <FlatList
               style={{width: '92%'}}
@@ -115,6 +117,7 @@ const styles = StyleSheet.create({
   },
   taskNameButtonTitle: {
     fontSize: 20,
+    color: colors.main,
   },
   modal: {
     flex: 1,

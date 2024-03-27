@@ -16,6 +16,25 @@ function ForwardIcon(color: string) {
 `;
 }
 
+function TaskIcon(color: string) {
+  return `<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M352 176L217.6 336L160 272" stroke=${color} stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M400 64H112C85.4903 64 64 85.4903 64 112V400C64 426.51 85.4903 448 112 448H400C426.51 448 448 426.51 448 400V112C448 85.4903 426.51 64 400 64Z" stroke=${color} stroke-width="32" stroke-linejoin="round"/>
+</svg>
+
+`;
+}
+
+function ChatIcon(color: string) {
+  return `<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M87.4801 380C88.6801 375.62 86.0501 369.53 83.5401 365.14C82.762 363.829 81.9141 362.56 81.0001 361.34C59.4727 328.693 47.9987 290.446 48.0001 251.34C47.6401 139.09 140.72 48 255.82 48C356.2 48 440 117.54 459.57 209.85C462.507 223.536 463.992 237.493 464 251.49C464 363.9 374.51 456.42 259.41 456.42C241.1 456.42 216.41 451.82 202.94 448.05C189.47 444.28 176.02 439.28 172.55 437.94C168.998 436.576 165.225 435.874 161.42 435.87C157.271 435.855 153.161 436.682 149.34 438.3L81.5001 462.78C80.0176 463.421 78.4463 463.832 76.8401 464C75.5696 463.996 74.3125 463.74 73.1414 463.248C71.9704 462.755 70.9088 462.035 70.0178 461.129C69.1269 460.223 68.4245 459.15 67.9511 457.971C67.4778 456.792 67.2429 455.53 67.2601 454.26C67.3435 453.145 67.5446 452.042 67.8601 450.97L87.4801 380Z" stroke=${color} stroke-width="32" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M160 288C177.673 288 192 273.673 192 256C192 238.327 177.673 224 160 224C142.327 224 128 238.327 128 256C128 273.673 142.327 288 160 288Z" fill=${color}/>
+<path d="M256 288C273.673 288 288 273.673 288 256C288 238.327 273.673 224 256 224C238.327 224 224 238.327 224 256C224 273.673 238.327 288 256 288Z" fill=${color}/>
+<path d="M352 288C369.673 288 384 273.673 384 256C384 238.327 369.673 224 352 224C334.327 224 320 238.327 320 256C320 273.673 334.327 288 352 288Z" fill=${color}/>
+</svg>
+`;
+}
+
 function GridIcon(color: string) {
   return `<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M204 48H68C56.9543 48 48 56.9543 48 68V204C48 215.046 56.9543 224 68 224H204C215.046 224 224 215.046 224 204V68C224 56.9543 215.046 48 204 48Z" stroke=${color} stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
@@ -55,6 +74,13 @@ function UpIcon(color: string) {
 function DownIcon(color: string) {
   return `<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M112 184L256 328L400 184" stroke=${color} stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+}
+
+function CloseIcon(color: string) {
+  return `<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M289.94 256L384.94 161C389.449 156.499 391.985 150.392 391.99 144.021C391.996 137.651 389.471 131.539 384.97 127.03C380.469 122.521 374.362 119.985 367.991 119.98C361.62 119.974 355.509 122.499 351 127L256 222L161 127C156.491 122.491 150.376 119.958 144 119.958C137.624 119.958 131.509 122.491 127 127C122.491 131.509 119.958 137.624 119.958 144C119.958 150.376 122.491 156.491 127 161L222 256L127 351C122.491 355.509 119.958 361.624 119.958 368C119.958 374.376 122.491 380.491 127 385C131.509 389.509 137.624 392.042 144 392.042C150.376 392.042 156.491 389.509 161 385L256 290L351 385C355.509 389.509 361.624 392.042 368 392.042C374.376 392.042 380.491 389.509 385 385C389.509 380.491 392.042 374.376 392.042 368C392.042 361.624 389.509 355.509 385 351L289.94 256Z" fill=${color}/>
 </svg>
 `;
 }
@@ -110,6 +136,27 @@ export default function Icon(props: {
     down: (
       <SvgXml
         xml={DownIcon(props.color)}
+        width={props.size}
+        height={props.size}
+      />
+    ),
+    chat: (
+      <SvgXml
+        xml={ChatIcon(props.color)}
+        width={props.size}
+        height={props.size}
+      />
+    ),
+    task: (
+      <SvgXml
+        xml={TaskIcon(props.color)}
+        width={props.size}
+        height={props.size}
+      />
+    ),
+    close: (
+      <SvgXml
+        xml={CloseIcon(props.color)}
         width={props.size}
         height={props.size}
       />
