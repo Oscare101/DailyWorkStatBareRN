@@ -14,6 +14,8 @@ import NewDayScreen from '../screens/NewDayScreen';
 import StatisticsScreen from '../screens/StatisticsScreen';
 
 import {MMKV} from 'react-native-mmkv';
+import Icon from '../components/Icon';
+import colors from '../constants/colors';
 
 export const storage = new MMKV();
 
@@ -31,8 +33,8 @@ export default function MainNavigation() {
     const bottomTabData = [
       {
         title: 'Розклад',
-        iconActive: 'list',
-        iconInactive: 'list',
+        iconActive: 'grid',
+        iconInactive: 'grid',
         action: () => {
           navigation.navigate('MainNavigation', {
             screen: 'MainScreen',
@@ -43,8 +45,8 @@ export default function MainNavigation() {
 
       {
         title: 'Статистика',
-        iconActive: 'stats-chart',
-        iconInactive: 'stats-chart-outline',
+        iconActive: 'chart',
+        iconInactive: 'chart',
         action: () => {
           navigation.navigate('StatisticsNavigation', {
             screen: 'StatisticsScreen',
@@ -80,11 +82,11 @@ export default function MainNavigation() {
               paddingHorizontal: 10,
               height: '100%',
             }}>
-            {/* {state.index === index ? (
-              <Icon name={item.iconActive} size={24} color={'#000'} />
+            {state.index === index ? (
+              <Icon icon={item.iconActive} size={24} color={colors.main} />
             ) : (
-              <Icon name={item.iconInactive} size={24} color={'#000'} />
-            )} */}
+              <Icon icon={item.iconInactive} size={24} color={colors.main} />
+            )}
             <Text>{item.title}</Text>
           </TouchableOpacity>
         ))}
