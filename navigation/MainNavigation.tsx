@@ -14,7 +14,6 @@ import NewDayScreen from '../screens/NewDayScreen';
 import StatisticsScreen from '../screens/StatisticsScreen';
 
 import {MMKV} from 'react-native-mmkv';
-import Icon from 'react-native-ionicons';
 
 export const storage = new MMKV();
 
@@ -81,11 +80,11 @@ export default function MainNavigation() {
               paddingHorizontal: 10,
               height: '100%',
             }}>
-            {state.index === index ? (
+            {/* {state.index === index ? (
               <Icon name={item.iconActive} size={24} color={'#000'} />
             ) : (
               <Icon name={item.iconInactive} size={24} color={'#000'} />
-            )}
+            )} */}
             <Text>{item.title}</Text>
           </TouchableOpacity>
         ))}

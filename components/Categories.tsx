@@ -13,7 +13,6 @@ import {RootState} from '../redux';
 import {DailyWork} from '../constants/interfaces';
 import {updateDailyWork} from '../redux/dailyWork';
 import {useState} from 'react';
-import Icon from 'react-native-ionicons';
 export default function Categories(props: any) {
   const dailyWork = useSelector((state: RootState) => state.dailyWork);
   const dispatch = useDispatch();
@@ -91,7 +90,7 @@ export default function Categories(props: any) {
               style={styles.exitButton}
               activeOpacity={0.8}
               onPress={() => setModal(false)}>
-              <Icon name="close-outline" size={36} color="black" />
+              {/* <Icon name="close-outline" size={36} color="black" /> */}
             </TouchableOpacity>
             <FlatList
               style={{width: '92%'}}

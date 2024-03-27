@@ -1,6 +1,5 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {GetWeekDay} from '../constants/functions';
-import Icon from 'react-native-ionicons';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux';
 import {DailyWork} from '../constants/interfaces';
@@ -59,7 +58,7 @@ export default function StatBlock(props: any) {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Icon name="checkbox-outline" size={24} color="black" />
+          {/* <Icon name="checkbox-outline" size={24} color="black" /> */}
           <Text style={styles.statText}>Задачі: </Text>
           <Text style={styles.statValue}>{GetTasks()?.tasks || 0}</Text>
         </View>
@@ -125,7 +124,7 @@ export default function StatBlock(props: any) {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Icon name="chatbubble-ellipses-outline" size={24} color="black" />
+          {/* <Icon name="chatbubble-ellipses-outline" size={24} color="black" /> */}
           <Text style={styles.statText}>Чати: </Text>
           <Text style={styles.statValue}>{GetTasks()?.chats || 0}</Text>
         </View>

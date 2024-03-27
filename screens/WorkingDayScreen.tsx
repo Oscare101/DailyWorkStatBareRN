@@ -1,12 +1,10 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {GetWeekDay} from '../constants/functions';
-import Icon from 'react-native-ionicons';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux';
 import {DailyWork} from '../constants/interfaces';
 import {updateDailyWork} from '../redux/dailyWork';
 import StatBlock from '../components/StatBlock';
-import SwipeToDelete from '../components/SwipeToDelete';
 import Categories from '../components/Categories';
 
 export default function WorkingDayScreen({route, navigation}: any) {
@@ -34,7 +32,7 @@ export default function WorkingDayScreen({route, navigation}: any) {
           style={styles.backButton}
           activeOpacity={0.8}
           onPress={() => navigation.goBack()}>
-          <Icon name="chevron-back" size={40} color="black" />
+          {/* <Icon name="chevron-back" size={40} color="black" /> */}
         </TouchableOpacity>
         <Text style={styles.weekDay}>
           {GetWeekDay(
@@ -52,12 +50,6 @@ export default function WorkingDayScreen({route, navigation}: any) {
       <StatBlock data={route.params.data} />
       <Categories data={route.params.data} />
       <View style={{flex: 1}}></View>
-
-      <SwipeToDelete
-        title="Видалити робочий день"
-        action={DeleteDay}
-        icon="trash-outline"
-      />
     </View>
   );
 }

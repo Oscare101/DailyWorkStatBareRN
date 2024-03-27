@@ -1,5 +1,4 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-ionicons';
 
 export default function CreateDay(props: any) {
   return (
@@ -7,7 +6,7 @@ export default function CreateDay(props: any) {
       style={styles.addButton}
       activeOpacity={0.8}
       onPress={() => props.onCreateDay()}>
-      <Icon name="add" size={40} color="#fff" />
+      {/* <Icon name="add" size={40} color="#fff" /> */}
     </TouchableOpacity>
   );
 }
