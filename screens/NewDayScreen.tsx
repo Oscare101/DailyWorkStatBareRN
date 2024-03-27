@@ -63,6 +63,7 @@ export default function NewDayScreen({navigation}: any) {
     const newDailyWork = [...dailyWork, newDay];
     dispatch(updateDailyWork(newDailyWork));
     navigation.goBack();
+    navigation.navigate('WorkingDayScreen', {data: newDay});
   }
 
   return (
