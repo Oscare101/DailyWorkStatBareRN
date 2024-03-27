@@ -1,41 +1,31 @@
-import {
-  Clipboard,
-  FlatList,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../redux'
-import { DailyWork } from '../constants/interfaces'
-import { useState } from 'react'
-import { GetWeekDay } from '../constants/functions'
-import CreateDay from '../components/CreateDay'
-import CoppyButton from '../components/CopyButton'
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import {RootState} from '../redux';
+import {DailyWork} from '../constants/interfaces';
+import {GetWeekDay} from '../constants/functions';
+import CreateDay from '../components/CreateDay';
+import colors from '../constants/colors';
 
-export default function MainScreen({ navigation }: any) {
-  const dailyWork: any = useSelector((state: RootState) => state.dailyWork)
-  const dispatch = useDispatch()
+export default function MainScreen({navigation}: any) {
+  const dailyWork: DailyWork[] = useSelector(
+    (state: RootState) => state.dailyWork,
+  );
 
   function GetSortedDays() {
-    let daysArr: any = []
+    let daysArr: any = [];
     dailyWork.forEach((i: any) => {
-      daysArr.push(i)
-    })
-    daysArr.sort((a: any, b: any) => b.timestamp - a.timestamp)
-    return daysArr
+      daysArr.push(i);
+    });
+    daysArr.sort((a: any, b: any) => b.timestamp - a.timestamp);
+    return daysArr;
   }
 
-  function RenderDay({ item }: any) {
+  function RenderDay({item}: any) {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => navigation.navigate('WorkingDayScreen', { data: item })}
-        style={styles.dayBlock}
-      >
+        onPress={() => navigation.navigate('WorkingDayScreen', {data: item})}
+        style={styles.dayBlock}>
         <View style={styles.rowBetween}>
           <Text style={styles.weekDay}>
             {GetWeekDay(item.year, item.month, item.date)}
@@ -54,29 +44,25 @@ export default function MainScreen({ navigation }: any) {
           </Text>
         </View>
       </TouchableOpacity>
-    )
+    );
   }
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'#eee'} />
       {dailyWork.length ? (
         <FlatList
+          showsVerticalScrollIndicator={false}
           style={styles.flatList}
           data={GetSortedDays()}
           renderItem={RenderDay}
+          ListFooterComponent={() => <View style={{height: 100}} />}
         />
       ) : (
         <Text>Створіть свій перший робочий день</Text>
       )}
       <CreateDay onCreateDay={() => navigation.navigate('NewDayScreen')} />
-      <CoppyButton
-        onCreateDay={() => {
-          Clipboard.setString(JSON.stringify(dailyWork))
-        }}
-      />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -84,13 +70,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: '#eee',
+    backgroundColor: colors.bg,
     flex: 1,
   },
-  flatList: { width: '100%', overflow: 'visible' },
+  flatList: {width: '100%', overflow: 'visible'},
   dayBlock: {
     width: '92%',
-    backgroundColor: '#fff',
+    backgroundColor: colors.card,
     borderRadius: 5,
     flexDirection: 'column',
     alignItems: 'center',
@@ -98,7 +84,7 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 5,
     alignSelf: 'center',
-    marginVertical: 10,
+    marginVertical: 5,
   },
   rowBetween: {
     width: '100%',
@@ -108,20 +94,22 @@ const styles = StyleSheet.create({
   },
   weekDay: {
     fontSize: 18,
+    color: colors.main,
   },
   date: {
     fontSize: 14,
     fontWeight: '300',
+    color: colors.main,
   },
   horizontalLine: {
     height: 1,
     width: '100%',
-    backgroundColor: '#666',
+    backgroundColor: colors.comment,
     marginVertical: 5,
   },
-  stat: { fontSize: 14, fontWeight: '400' },
+  stat: {fontSize: 14, fontWeight: '300', color: colors.comment},
   statSum: {
     fontSize: 14,
-    fontWeight: '500',
+    color: colors.comment,
   },
-})
+});

@@ -1,10 +1,4 @@
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {GetWeekDay} from '../constants/functions';
 import Icon from 'react-native-ionicons';
 import {useDispatch, useSelector} from 'react-redux';
@@ -12,7 +6,6 @@ import {RootState} from '../redux';
 import {DailyWork} from '../constants/interfaces';
 import {updateDailyWork} from '../redux/dailyWork';
 import StatBlock from '../components/StatBlock';
-import DangeroudBlock from '../components/DangeroudBlock';
 import SwipeToDelete from '../components/SwipeToDelete';
 import Categories from '../components/Categories';
 
@@ -36,8 +29,6 @@ export default function WorkingDayScreen({route, navigation}: any) {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'#eee'} />
-
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}

@@ -1,10 +1,4 @@
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {GetWeekDay} from '../constants/functions';
 import Icon from 'react-native-ionicons';
 import {useDispatch, useSelector} from 'react-redux';

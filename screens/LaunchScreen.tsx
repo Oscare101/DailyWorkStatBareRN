@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {updateDailyWork} from '../redux/dailyWork';
 import {DailyWork, UserInfo} from '../constants/interfaces';
@@ -53,8 +53,6 @@ export default function LaunchScreen({navigation}: any) {
   }, []);
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'#eee'} />
-
       <Text>loading</Text>
     </View>
   );

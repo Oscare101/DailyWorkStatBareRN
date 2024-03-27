@@ -1,7 +1,6 @@
 import {
   FlatList,
   Modal,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -86,10 +85,6 @@ export default function Categories(props: any) {
       </TouchableOpacity>
 
       <Modal transparent visible={modal} style={styles.modal}>
-        <StatusBar
-          // barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-          backgroundColor={'#bbb'}
-        />
         <View style={styles.modalBG}>
           <View style={styles.modalBlock}>
             <TouchableOpacity

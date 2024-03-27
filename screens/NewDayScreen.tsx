@@ -1,6 +1,5 @@
 import {
   FlatList,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -176,7 +175,6 @@ export default function NewDayScreen({navigation}: any) {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'#eee'} />
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
